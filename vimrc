@@ -1,4 +1,4 @@
-" vim-bootstrap 2024-01-21 10:31:40
+" vim-bootstrap 2024-03-10 17:25:10
 
 "*****************************************************************************
 "" Vim-Plug core
@@ -10,7 +10,7 @@ else
   let curl_exists=expand('curl')
 endif
 
-let g:vim_bootstrap_langs = "go,python"
+let g:vim_bootstrap_langs = "go,javascript,python,typescript"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
 let g:vim_bootstrap_theme = "dracula"
 let g:vim_bootstrap_frams = ""
@@ -81,14 +81,24 @@ Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 
 
+" javascript
+"" Javascript Bundle
+Plug 'jelera/vim-javascript-syntax'
+
+
 " python
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 
+" typescript
+Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
+
 
 "*****************************************************************************
 "*****************************************************************************
@@ -519,6 +529,16 @@ augroup END
     \"go": ['golint', 'go vet'], })
 
 
+" javascript
+let g:javascript_enable_domhtmlcss = 1
+
+" vim-javascript
+augroup vimrc-javascript
+  autocmd!
+  autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
+augroup END
+
+
 " python
 " vim-python
 augroup vimrc-python
@@ -548,6 +568,10 @@ let g:airline#extensions#virtualenv#enabled = 1
 
 " Syntax highlight
 let python_highlight_all = 1
+
+
+" typescript
+let g:yats_host_keyword = 1
 
 
 
